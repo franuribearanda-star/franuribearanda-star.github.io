@@ -293,31 +293,31 @@
                 card.dataset.id = f.id;
 
                 card.innerHTML = `
-          <div class="meta">
-            <div class="round">Combate ${f.id}</div>
-            <div class="round">${f.time}</div>
+        <div class="meta">
+          <div class="round">Combate ${f.id}</div>
+          <div class="round">${f.time}</div>
+        </div>
+
+        <div class="fighters">
+          <div class="boxer" data-side="a" tabindex="0">
+            <div class="name" contenteditable="true">${escapeHtml(f.a)}</div>
+            <div class="info">Equipo: Sus puños — ${f.a}</div>
           </div>
 
-          <div class="fighters">
-            <div class="boxer" data-side="a" tabindex="0">
-              <div class="name" contenteditable="true">${escapeHtml(f.a)}</div>
-              <div class="info">Equipo: Sus puños — ${f.a}</div>
-            </div>
-
-            <div class="boxer" data-side="b" tabindex="0">
-              <div class="name" contenteditable="true">${escapeHtml(f.b)}</div>
-              <div class="info">Equipo: Diosito — ${f.b}</div>
-            </div>
+          <div class="boxer" data-side="b" tabindex="0">
+            <div class="name" contenteditable="true">${escapeHtml(f.b)}</div>
+            <div class="info">Equipo: Diosito — ${f.b}</div>
           </div>
+        </div>
 
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div class="odds">
-              <div class="odd">VS</div>
-              <div style="font-size:13px;color:var(--muted)">Pégale tú que tengo cositas que hacer</div>
-            </div>
-            <div style="font-size:12px;color:var(--muted)">Elige tonto</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="odds">
+            <div class="odd">VS</div>
+            <div style="font-size:13px;color:var(--muted)">Pégale tú que tengo cositas que hacer</div>
           </div>
-        `;
+          <div style="font-size:12px;color:var(--muted)">Elige tonto</div>
+        </div>
+      `;
 
                 const [left, right] = card.querySelectorAll('.boxer');
                 left.addEventListener('click', () => selectWinner(card, f.id, 'a'));
@@ -354,16 +354,31 @@
             render();
         });
 
+        // ==== EXPORTADOR BONITO Y TABULADO ====
         document.getElementById('exportBtn').addEventListener('click', () => {
-            const data = JSON.stringify(fights, null, 2);
-            const blob = new Blob([data], { type: 'text/plain' });
+            let contenido = "🥊  RESULTADOS DE LOS COMBATES ENTRE AMIGOS 🥊\n\n";
+            contenido += `📅 Fecha: ${new Date().toLocaleString()}\n`;
+            contenido += "──────────────────────────────────────────────\n";
+            contenido += " Nº |    COMBATE                  | HORA  | GANADOR\n";
+            contenido += "──────────────────────────────────────────────\n";
+
+            fights.forEach(f => {
+                const ganador = f.winner ? f.winner : "Sin decidir";
+                const linea = `${String(f.id).padEnd(2)} | ${(`${f.a} vs ${f.b}`).padEnd(26)} | ${f.time.padEnd(5)} | ${ganador}\n`;
+                contenido += linea;
+            });
+
+            contenido += "──────────────────────────────────────────────\n";
+            contenido += "💡 Consejo final: Vivan los tios OSTIA.\n";
+
+            const blob = new Blob([contenido], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'tuapuestaLUDOPATA.txt';
+            a.download = 'Resultados_Combates_TOCOTO.txt';
             a.click();
             URL.revokeObjectURL(url);
-            alert('Archivo TXT generado con los resultados de los combates.');
+            alert('Archivo TXT generado con formato elegante y tabulado.');
         });
 
         function escapeHtml(s) {
@@ -374,6 +389,7 @@
 
         render();
     </script>
+
 </body>
 
 </html>
