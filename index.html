@@ -1,13 +1,6 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("IXoRIwYl94hf1AgDx"); // Sustituye por tu clave pública
-  })();
-</script>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Combates de Boxeo — 16 locos que se llaman amigos</title>
@@ -176,44 +169,23 @@
     });
 
     // Exportar los resultados de los locos en unn archivo txt
-   document.getElementById('exportBtn').addEventListener('click', async ()=>{
+   document.getElementById('exportBtn').addEventListener('click', ()=>{
   const data = JSON.stringify(fights, null, 2);
 
-  const apostadorEmail = prompt("Introduce tu correo electrónico:");
-  if (!apostadorEmail || !apostadorEmail.includes("@")) {
-    alert("Correo no válido. Inténtalo de nuevo.");
-    return;
-  }
+  // Crear un archivo .txt con los datos
+  const blob = new Blob([data], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
 
-  const casaApuestasEmail = "tu_casa@apuestas.com"; // cambia por el correo real de tu “casa”
+  // Crear un enlace temporal y descargarlo
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'tuapuestaLUDOPATA.txt';
+  a.click();
 
-  const message = `
-  🥊 RESULTADOS DE LOS COMBATES ENTRE AMIGOS 🥊
+  // Liberar memoria
+  URL.revokeObjectURL(url);
 
-  ${data}
-
-  Apostador: ${apostadorEmail}
-  Fecha: ${new Date().toLocaleString()}
-  `;
-
-  try {
-    // Enviar al apostador
-    await emailjs.send("service_boxtoco", "template_0bk274j", {
-      to_email: apostadorEmail,
-      message: message
-    });
-
-    // Enviar a la casa de apuestas
-    await emailjs.send("service_boxtoco", "template_0bk274j", {
-      to_email: franuribearanda@gmail.com,
-      message: message
-    });
-
-    alert("Resultados enviados correctamente al apostador y a la casa de apuestas.");
-  } catch (err) {
-    console.error(err);
-    alert("Hubo un error al enviar los correos. Revisa la consola para más detalles.");
-  }
+  alert('Archivo TXT generado con los resultados de los combates, si no puedes abrirlo, pasalo a pdf con el ILOVEPDF en google.');
 });
 
 
