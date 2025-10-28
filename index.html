@@ -1,83 +1,227 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Combates de Boxeo — 16 locos que se llaman amigos</title>
   <style>
     /*colores tipo bet365 LUDOPATIA PURA*/
-    :root{
-      --verde-oscuro:#062e1f; /* fondo principal */
-      --verde:#0aa84b;       /* acentos */
-      --verde-claro:#1fc36a; /* hover */
-      --amarillo:#ffd400;    /* resaltado */
-      --gris:#0b0b0b;        /* tarjetas */
-      --texto:#f2f5f2;       /* texto claro */
-      --muted:#a7b0a6;
-      --card-radius:12px;
-      --sombra: 0 6px 18px rgba(2,6,4,0.6);
+    :root {
+      --verde-oscuro: #062e1f;
+      /* fondo principal */
+      --verde: #0aa84b;
+      /* acentos */
+      --verde-claro: #1fc36a;
+      /* hover */
+      --amarillo: #ffd400;
+      /* resaltado */
+      --gris: #0b0b0b;
+      /* tarjetas */
+      --texto: #f2f5f2;
+      /* texto claro */
+      --muted: #a7b0a6;
+      --card-radius: 12px;
+      --sombra: 0 6px 18px rgba(2, 6, 4, 0.6);
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
 
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--verde-oscuro),#05311f 60%);color:var(--texto)}
-    .wrap{max-width:1100px;margin:28px auto;padding:22px}
-
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{
-      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--verde),#075b36);display:flex;align-items:center;justify-content:center;box-shadow:var(--sombra)
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(180deg, var(--verde-oscuro), #05311f 60%);
+      color: var(--texto)
     }
-    .logo strong{color:var(--gris);font-size:20px}
-    h1{font-size:20px;margin:0}
-    p.lead{color:var(--muted);margin:0;font-size:13px}
 
-    .controls{display:flex;gap:12px;align-items:center}
-    .btn{
-      background:var(--amarillo);color:#111;padding:8px 12px;border-radius:8px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.35)
+    .wrap {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 22px
     }
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--texto);cursor:pointer}
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--verde), #075b36);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--sombra)
+    }
+
+    .logo strong {
+      color: var(--gris);
+      font-size: 20px
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0
+    }
+
+    p.lead {
+      color: var(--muted);
+      margin: 0;
+      font-size: 13px
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .btn {
+      background: var(--amarillo);
+      color: #111;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35)
+    }
+
+    .ghost {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--texto);
+      cursor: pointer
+    }
 
     /* Grid de combates */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:18px}
-
-    .fight{
-      background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));padding:14px;border-radius:var(--card-radius);box-shadow:var(--sombra);border:1px solid rgba(255,255,255,0.03);
-      display:flex;flex-direction:column;gap:12px;min-height:140px;position:relative;overflow:hidden
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 18px
     }
-    .fight .meta{display:flex;justify-content:space-between;align-items:center}
-    .round{background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
 
-    .fighters{display:flex;gap:10px}
-    .boxer{
-      flex:1;padding:10px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));display:flex;flex-direction:column;gap:8px;align-items:flex-start;cursor:pointer;transition:transform .12s ease, box-shadow .12s ease
+    .fight {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55));
+      padding: 14px;
+      border-radius: var(--card-radius);
+      box-shadow: var(--sombra);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 140px;
+      position: relative;
+      overflow: hidden
     }
-    .boxer:hover{transform:translateY(-4px)}
-    .name{font-weight:700}
-    .info{font-size:12px;color:var(--muted)}
 
-    .odds{display:flex;gap:8px;align-items:center}
-    .odd{background:rgba(255,255,255,0.05);padding:6px 8px;border-radius:8px;font-weight:700}
+    .fight .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .round {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .fighters {
+      display: flex;
+      gap: 10px
+    }
+
+    .boxer {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease
+    }
+
+    .boxer:hover {
+      transform: translateY(-4px)
+    }
+
+    .name {
+      font-weight: 700
+    }
+
+    .info {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .odds {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .odd {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-weight: 700
+    }
 
     /* Ganador marcado */
-    .winner{outline:4px solid rgba(255,212,0,0.14);box-shadow:0 8px 24px rgba(255,212,0,0.06)}
+    .winner {
+      outline: 4px solid rgba(255, 212, 0, 0.14);
+      box-shadow: 0 8px 24px rgba(255, 212, 0, 0.06)
+    }
 
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center
+    }
 
     /* Responsive small tweaks */
-    @media (max-width:520px){
-      .logo{width:44px;height:44px}
-      h1{font-size:16px}
+    @media (max-width:520px) {
+      .logo {
+        width: 44px;
+        height: 44px
+      }
+
+      h1 {
+        font-size: 16px
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
         <div class="logo"><strong>VOX</strong></div>
         <div>
-          <h1>Combates entre "amigos"</h1>
-          <p class="lead">Aquí teneis los 8 combates de la Liga TOCOTÓ  — Marcad los nombres de las criaturas que creeis que van a ganar.</p>
+          <h1>Combates entre amigos</h1>
+          <p class="lead">Aquí teneis los 8 combates para el día de hoy de la Liga TOCOTÓ — Marcad los nombres de las
+            criaturas que creeis que van a ganar.</p>
         </div>
       </div>
       <div class="controls">
@@ -88,7 +232,7 @@
 
     <main>
       <section class="grid" id="grid">
-      
+
       </section>
     </main>
 
@@ -100,23 +244,23 @@
   <script>
     // Nombres de los locos y la hora del combate
     const fights = [
-      {id:1,a:'Victor',b:'Jorge',time:'17:00'},
-      {id:2,a:'Julián',b:'Chechu',time:'17:30'},
-      {id:3,a:'Arturo',b:'Paco',time:'18:00'},
-      {id:4,a:'Gea',b:'Marco',time:'18:30'},
-      {id:5,a:'Rafa',b:'Juanjo',time:'19:00'},
-      {id:6,a:'Iván',b:'Souza',time:'19:30'},
-      {id:7,a:'Antonio',b:'Pedro',time:'20:00'},
-      {id:8,a:'Uribe',b:'Rodrigo',time:'20:30'},
+      { id: 1, a: 'Souza', b: 'Iván', time: '18:00' },
+      { id: 2, a: 'Antonio', b: 'Pedro', time: '18:30' },
+      { id: 3, a: 'Rafa', b: 'Juanjo', time: '19:00' },
+      { id: 4, a: 'Victor', b: 'Jorge', time: '19:30' },
+      { id: 5, a: 'Gea', b: 'Marco', time: '20:00' },
+      { id: 6, a: 'Chechu', b: 'Julián', time: '20:30' },
+      { id: 7, a: 'Arturo', b: 'Paco', time: '21:00' },
+      { id: 8, a: 'Uribe', b: 'Rodrigo', time: '21:30' },
     ];
 
     const grid = document.getElementById('grid');
 
-    function render(){
-      grid.innerHTML='';
-      fights.forEach(f=>{
+    function render() {
+      grid.innerHTML = '';
+      fights.forEach(f => {
         const card = document.createElement('article');
-        card.className='fight';
+        card.className = 'fight';
         card.dataset.id = f.id;
         card.innerHTML = `
           <div class="meta">
@@ -134,66 +278,67 @@
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div class="odds"><div class="odd">VS</div><div style="font-size:13px;color:var(--muted)">Pégale tu q tengo cositas que hacer</div></div>
+            <div class="odds"><div class="odd">VS</div><div style="font-size:13px;color:var(--muted)">Pégale tu a tengo cositas que hacer</div></div>
             <div style="font-size:12px;color:var(--muted)">Elige tonto</div>
           </div>
         `;
 
         // Listeners para marcar ganador
-        const [left,right] = card.querySelectorAll('.boxer');
-        left.addEventListener('click', ()=>selectWinner(card,f.id,'a'));
-        right.addEventListener('click', ()=>selectWinner(card,f.id,'b'));
+        const [left, right] = card.querySelectorAll('.boxer');
+        left.addEventListener('click', () => selectWinner(card, f.id, 'a'));
+        right.addEventListener('click', () => selectWinner(card, f.id, 'b'));
 
         // Allow keyboard selection
-        left.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); selectWinner(card,f.id,'a') } });
-        right.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); selectWinner(card,f.id,'b') } });
+        left.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectWinner(card, f.id, 'a') } });
+        right.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectWinner(card, f.id, 'b') } });
 
         grid.appendChild(card);
       })
     }
 
-    function selectWinner(card, id, side){
+    function selectWinner(card, id, side) {
       // Remove any previous winner class in this card
-      card.querySelectorAll('.boxer').forEach(b=>b.classList.remove('winner'));
+      card.querySelectorAll('.boxer').forEach(b => b.classList.remove('winner'));
       const chosen = card.querySelector(`.boxer[data-side="${side}"]`);
       chosen.classList.add('winner');
       // store selection
-      const fight = fights.find(x=>x.id===id);
+      const fight = fights.find(x => x.id === id);
       fight.winner = side === 'a' ? fight.a : fight.b;
     }
 
     // Reset
-    document.getElementById('resetBtn').addEventListener('click', ()=>{
-      fights.forEach(f=>delete f.winner);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      fights.forEach(f => delete f.winner);
       render();
     });
 
     // Exportar los resultados de los locos en unn archivo txt
-   document.getElementById('exportBtn').addEventListener('click', ()=>{
-  const data = JSON.stringify(fights, null, 2);
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      const data = JSON.stringify(fights, null, 2);
 
-  // Crear un archivo .txt con los datos
-  const blob = new Blob([data], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
+      // Crear un archivo .txt con los datos
+      const blob = new Blob([data], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
 
-  // Crear un enlace temporal y descargarlo
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'tuapuestaLUDOPATA.txt';
-  a.click();
+      // Crear un enlace temporal y descargarlo
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'tuapuestaLUDOPATA.txt';
+      a.click();
 
-  // Liberar memoria
-  URL.revokeObjectURL(url);
+      // Liberar memoria
+      URL.revokeObjectURL(url);
 
-  alert('Archivo TXT generado con los resultados de los combates, si no puedes abrirlo, pasalo a pdf con el ILOVEPDF en google.');
-});
+      alert('Archivo TXT generado con los resultados de los combates, si no puedes abrirlo, pasalo a pdf con el ILOVEPDF en google.');
+    });
 
 
     // small util
-    function escapeHtml(s){return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]))}
+    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
 
     // Inicializar
     render();
   </script>
 </body>
+
 </html>
