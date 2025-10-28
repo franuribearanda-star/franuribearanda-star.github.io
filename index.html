@@ -356,7 +356,7 @@
 
         // ==== EXPORTADOR BONITO Y TABULADO ====
         document.getElementById('exportBtn').addEventListener('click', () => {
-            let contenido = "🥊  RESULTADOS DE LOS COMBATES ENTRE AMIGOS 🥊\n\n";
+            let contenido = "🥊  Tus apuestas  🥊\n\n";
             contenido += `📅 Fecha: ${new Date().toLocaleString()}\n`;
             contenido += "──────────────────────────────────────────────\n";
             contenido += " Nº |    COMBATE                  | HORA  | GANADOR\n";
@@ -375,10 +375,10 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'Resultados_Combates_TOCOTO.txt';
+            a.download = 'TusApuestasLUDOPATA.txt';
             a.click();
             URL.revokeObjectURL(url);
-            alert('Archivo TXT generado con formato elegante y tabulado.');
+            alert('Mándale el txt a MATEO por PRIV');
         });
 
         function escapeHtml(s) {
